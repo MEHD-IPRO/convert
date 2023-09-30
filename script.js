@@ -1,5 +1,6 @@
 // Set your API key here
 const apiKey = '0a71530463b206e35bdbc739';
+const baseCurrency = 'USD'; // Replace with your desired base currency code
 
 document.addEventListener("DOMContentLoaded", function () {
     const amountInput = document.getElementById("amount");
