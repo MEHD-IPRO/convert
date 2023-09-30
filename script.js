@@ -32,17 +32,24 @@ document.addEventListener("DOMContentLoaded", function () {
       resultElement.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
     });
   
-    // Populate currency options dynamically (sample)
-    function populateCurrencyOptions() {
-      // Replace this with code to fetch currency options from an API or another data source
-      const currencies = ["USD", "EUR", "GBP", "JPY", "CAD"]; // Sample currency list
+    // Define an array of popular currency options
+    const popularCurrencies = ["USD", "EUR", "GBP", "JPY", "CAD"];
   
+    // Populate currency options dynamically
+    function populateCurrencyOptions() {
       // Clear existing options
       fromCurrencySelect.innerHTML = "";
       toCurrencySelect.innerHTML = "";
   
-      // Add currency options to both select elements
-      currencies.forEach((currency) => {
+      // Add a default option (optional)
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.textContent = "Select currency";
+      fromCurrencySelect.appendChild(defaultOption);
+      toCurrencySelect.appendChild(defaultOption.cloneNode(true));
+  
+      // Add popular currency options to both select elements
+      popularCurrencies.forEach((currency) => {
         const option1 = document.createElement("option");
         option1.value = currency;
         option1.textContent = currency;
