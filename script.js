@@ -1,8 +1,5 @@
-// Import the dotenv package and load the environment variables
-require('dotenv').config();
-
-// Access the API key
-const apiKey = process.env.API_KEY;
+// Set your API key here
+const apiKey = '0a71530463b206e35bdbc739';
 
 document.addEventListener("DOMContentLoaded", function () {
     const amountInput = document.getElementById("amount");
