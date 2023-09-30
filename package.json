@@ -20,7 +20,6 @@
     "INR": 73.98,
     "JPY": 109.81,
     "MXN": 24.15
-    // Add more conversion rates here if needed
   },
   "dependencies": {
     "dotenv": "^16.3.1"
