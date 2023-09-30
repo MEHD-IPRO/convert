@@ -63,6 +63,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    /* Improved for SEO: Add a meaningful button text for accessibility */
+    text-transform: uppercase;
 }
 
 /* Hover styles for the convert button */
