@@ -33,7 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     // Define an array of popular currency options
-    const popularCurrencies = ["USD", "EUR", "GBP", "JPY", "CAD"];
+    const popularCurrencies = [
+      "USD", "EUR", "JPY", "GBP", "CHF", "AUD", "CAD", "CNY", "KRW", "SGD",
+      "NZD", "INR", "BRL", "ZAR", "RUB", "MXN", "HKD", "NOK", "SEK", "DKK",
+      "MYR", "THB", "SAR", "AED", "ARS", "TRY", "EGP", "IDR", "PHP", "MAD"
+    ];
   
     // Populate currency options dynamically
     function populateCurrencyOptions() {
