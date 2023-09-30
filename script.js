@@ -1,3 +1,9 @@
+// Import the dotenv package and load the environment variables
+require('dotenv').config();
+
+// Access the API key
+const apiKey = process.env.API_KEY;
+
 document.addEventListener("DOMContentLoaded", function () {
     const amountInput = document.getElementById("amount");
     const fromCurrencySelect = document.getElementById("fromCurrency");
@@ -51,4 +57,4 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Call the function to populate currency options
     populateCurrencyOptions();
-  });
+});
