@@ -72,8 +72,30 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Styles for the result paragraph */
-#result {
-    margin-top: 20px;
-    font-size: 18px;
+/* Styles for screens up to 768px width (typical mobile devices) */
+@media screen and (max-width: 768px) {
+    /* Adjust styles here */
+    body {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    
+    .converter {
+        max-width: 90%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    /* ... other adjustments ... */
+    
+    /* Additional styles for mobile devices can be added here */
+}
+
+/* Additional styles provided */
+.converter {
+    max-width: 90%; /* Relative to the parent container */
+    font-size: 16px; /* Use em or percentage for font size */
 }
