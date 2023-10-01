@@ -11,11 +11,29 @@
         <h1>Currency Converter</h1>
         <div class="input-container">
             <input type="number" id="amount" placeholder="Enter amount">
+
+            <!-- Label for the "From Currency" dropdown -->
+            <label for="fromCurrency">From Currency:</label>
             <!-- Add "fromCurrency" select element -->
-            <select id="fromCurrency"></select>
+            <select id="fromCurrency">
+                <!-- Add your option elements here -->
+                <option value="USD">US Dollars (USD)</option>
+                <option value="EUR">Euros (EUR)</option>
+                <!-- Add more options here -->
+            </select>
+
             <span>to</span>
+
+            <!-- Label for the "To Currency" dropdown -->
+            <label for="toCurrency">To Currency:</label>
             <!-- Add "toCurrency" select element -->
-            <select id="toCurrency"></select>
+            <select id="toCurrency">
+                <!-- Add your option elements here -->
+                <option value="USD">US Dollars (USD)</option>
+                <option value="EUR">Euros (EUR)</option>
+                <!-- Add more options here -->
+            </select>
+
             <button id="convert">Convert</button>
         </div>
         <p id="result"></p>
