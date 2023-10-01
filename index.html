@@ -6,17 +6,39 @@
     <title>Currency Converter</title>
     <meta name="description" content="Currency converter web app that allows you to convert between different currencies.">
     <link rel="stylesheet" href="styles.css"> <!-- Include the stylesheet here -->
+
+    <!-- Styles for the convert button -->
+    <style>
+        /* Styles for the convert button */
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff; /* Change to a high-contrast color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            /* Improved for SEO: Add a meaningful button text for accessibility */
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
     <div class="converter">
         <h1>Currency Converter</h1>
         <div class="input-container">
             <input type="number" id="amount" placeholder="Enter amount">
-            <!-- Add "fromCurrency" select element -->
-            <select id="fromCurrency"></select>
+            <!-- Label for "From Currency" dropdown -->
+            <label for="fromCurrency">From Currency:</label>
+            <select id="fromCurrency">
+                <!-- Add your option elements here -->
+            </select>
             <span>to</span>
-            <!-- Add "toCurrency" select element -->
-            <select id="toCurrency"></select>
+            <!-- Label for "To Currency" dropdown -->
+            <label for="toCurrency">To Currency:</label>
+            <select id="toCurrency">
+                <!-- Add your option elements here -->
+            </select>
             <button id="convert">Convert</button>
         </div>
         <p id="result"></p>
