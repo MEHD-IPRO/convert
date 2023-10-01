@@ -9,52 +9,46 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultElement = document.getElementById("result");
 
     // Function to fetch exchange rates from the API
-    function fetchExchangeRates(fromCurrency) {
-        const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
-        return fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`API request failed: ${response.statusText}`);
-                }
-                return response.json();
-            });
-    }
+    async function fetchExchangeRates(fromCurrency) {
+        try {
+            const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
+            const response = await fetch(apiUrl);
 
-    // Function to perform currency conversion
-    function convertCurrency(amount, fromCurrency, toCurrency) {
-        fetchExchangeRates(fromCurrency)
-            .then(data => {
-                if (data.result === 'success') {
-                    const exchangeRate = data.conversion_rates[toCurrency];
-                    if (exchangeRate) {
+            if (!response.ok) {
+                throw new Error(`API request failed: ${response.statusText}`);
+            }
+
+            const data = await response.json();
+
+            if (data.result === 'success') {
+                const exchangeRate = data.conversion_rates[toCurrencySelect.value];
+
+                if (exchangeRate) {
+                    const amount = parseFloat(amountInput.value);
+
+                    if (!isNaN(amount) && amount > 0) {
                         const convertedAmount = (amount * exchangeRate).toFixed(2);
-                        resultElement.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+                        resultElement.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrencySelect.value}`;
                     } else {
-                        resultElement.textContent = "Invalid currency selection.";
+                        resultElement.textContent = "Please enter a valid positive amount.";
                     }
                 } else {
-                    resultElement.textContent = `API request failed: ${data['error-type']}`;
+                    resultElement.textContent = "Invalid currency selection.";
                 }
-            })
-            .catch(error => {
-                resultElement.textContent = `Error: ${error}`;
-            });
+            } else {
+                resultElement.textContent = `API request failed: ${data['error-type']}`;
+            }
+        } catch (error) {
+            resultElement.textContent = `Error: ${error}`;
+        }
     }
 
     // Add event listener for the convert button
     convertButton.addEventListener("click", function () {
-        const amount = parseFloat(amountInput.value);
-        const fromCurrency = fromCurrencySelect.value;
-        const toCurrency = toCurrencySelect.value;
-
-        // Check if amount is valid
-        if (isNaN(amount) || amount <= 0) {
-            resultElement.textContent = "Please enter a valid positive amount.";
-        } else if (fromCurrency === toCurrency) {
+        if (fromCurrencySelect.value === toCurrencySelect.value) {
             resultElement.textContent = "Select different currencies for conversion.";
         } else {
-            // Perform currency conversion
-            convertCurrency(amount, fromCurrency, toCurrency);
+            fetchExchangeRates(fromCurrencySelect.value);
         }
     });
 
@@ -67,28 +61,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Populate currency options dynamically
     function populateCurrencyOptions() {
-        // Clear existing options
+        const defaultOption = new Option("Select currency", "");
+
         fromCurrencySelect.innerHTML = "";
+        fromCurrencySelect.add(defaultOption);
+
         toCurrencySelect.innerHTML = "";
+        toCurrencySelect.add(defaultOption.cloneNode(true));
 
-        // Add a default option (optional)
-        const defaultOption = document.createElement("option");
-        defaultOption.value = "";
-        defaultOption.textContent = "Select currency";
-        fromCurrencySelect.appendChild(defaultOption);
-        toCurrencySelect.appendChild(defaultOption.cloneNode(true));
-
-        // Add popular currency options to both select elements
         popularCurrencies.forEach((currency) => {
-            const option1 = document.createElement("option");
-            option1.value = currency;
-            option1.textContent = currency;
-            fromCurrencySelect.appendChild(option1);
-
-            const option2 = document.createElement("option");
-            option2.value = currency;
-            option2.textContent = currency;
-            toCurrencySelect.appendChild(option2);
+            const option = new Option(currency, currency);
+            fromCurrencySelect.add(option);
+            toCurrencySelect.add(option.cloneNode(true));
         });
     }
 
