@@ -81,13 +81,41 @@
             <!-- Label for "From Currency" dropdown -->
             <label for="fromCurrency">From Currency:</label>
             <select id="fromCurrency">
-                <!-- Add your option elements here -->
+                <!-- Populate "From Currency" dropdown with options from popularCurrencies array -->
+                <!-- You can use JavaScript to generate these options -->
+                <script>
+                    const popularCurrencies = [
+                        "USD", "EUR", "JPY", "GBP", "CHF", "AUD", "CAD", "CNY", "KRW", "SGD",
+                        "NZD", "INR", "BRL", "ZAR", "RUB", "MXN", "HKD", "NOK", "SEK", "DKK",
+                        "MYR", "THB", "SAR", "AED", "ARS", "TRY", "EGP", "IDR", "PHP", "MAD"
+                    ];
+
+                    const fromCurrencyDropdown = document.getElementById("fromCurrency");
+
+                    popularCurrencies.forEach(currency => {
+                        const option = document.createElement("option");
+                        option.value = currency;
+                        option.text = currency;
+                        fromCurrencyDropdown.appendChild(option);
+                    });
+                </script>
             </select>
             <span>to</span>
             <!-- Label for "To Currency" dropdown -->
             <label for="toCurrency">To Currency:</label>
             <select id="toCurrency">
-                <!-- Add your option elements here -->
+                <!-- Populate "To Currency" dropdown with options from popularCurrencies array -->
+                <!-- You can use JavaScript to generate these options -->
+                <script>
+                    const toCurrencyDropdown = document.getElementById("toCurrency");
+
+                    popularCurrencies.forEach(currency => {
+                        const option = document.createElement("option");
+                        option.value = currency;
+                        option.text = currency;
+                        toCurrencyDropdown.appendChild(option);
+                    });
+                </script>
             </select>
             <button id="convert">Convert</button>
         </div>
