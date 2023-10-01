@@ -89,6 +89,28 @@ button:hover {
         font-size: 20px;
     }
     
+    /* Mobile navigation menu styles */
+    .mobile-nav {
+        display: block; /* Show the navigation menu on smaller screens */
+        background-color: #333;
+        color: #fff;
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .mobile-nav li {
+        padding: 10px;
+    }
+
+    .mobile-nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    
     /* ... other adjustments ... */
     
     /* Additional styles for mobile devices can be added here */
