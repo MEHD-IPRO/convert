@@ -90,7 +90,6 @@
             <select id="toCurrency">
                 <!-- Populate "To Currency" dropdown with options from API -->
             </select>
-            <button id="convert">Convert</button>
         </div>
         <p id="result"></p>
     </div>
@@ -112,6 +111,8 @@
             .then(data => {
                 const fromCurrencyDropdown = document.getElementById("fromCurrency");
                 const toCurrencyDropdown = document.getElementById("toCurrency");
+                const amountInput = document.getElementById("amount");
+                const resultText = document.getElementById("result");
 
                 // Add the base currency (USD) as the first option
                 const baseOption = document.createElement("option");
@@ -131,6 +132,26 @@
                     option2.value = currency;
                     option2.text = currency + " (" + data.conversion_rates[currency] + ")";
                     toCurrencyDropdown.appendChild(option2);
+                }
+
+                // Add event listener to perform conversion on input or dropdown change
+                amountInput.addEventListener("input", performConversion);
+                fromCurrencyDropdown.addEventListener("change", performConversion);
+                toCurrencyDropdown.addEventListener("change", performConversion);
+
+                // Function to perform the currency conversion
+                function performConversion() {
+                    const fromCurrency = fromCurrencyDropdown.value;
+                    const toCurrency = toCurrencyDropdown.value;
+                    const amount = parseFloat(amountInput.value);
+
+                    if (!isNaN(amount)) {
+                        const conversionRate = data.conversion_rates[toCurrency] / data.conversion_rates[fromCurrency];
+                        const convertedAmount = (amount * conversionRate).toFixed(2);
+                        resultText.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+                    } else {
+                        resultText.textContent = "Enter a valid amount.";
+                    }
                 }
             })
             .catch(error => console.error("Error fetching data: ", error));
