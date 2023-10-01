@@ -82,13 +82,13 @@
             <!-- Label for "From Currency" dropdown -->
             <label for="fromCurrency">From Currency:</label>
             <select id="fromCurrency">
-                <!-- Populate "From Currency" dropdown with options from popularCurrencies array -->
+                <!-- Populate "From Currency" dropdown with options from API -->
             </select>
             <span>to</span>
             <!-- Label for "To Currency" dropdown -->
             <label for="toCurrency">To Currency:</label>
             <select id="toCurrency">
-                <!-- Populate "To Currency" dropdown with options from popularCurrencies array -->
+                <!-- Populate "To Currency" dropdown with options from API -->
             </select>
             <button id="convert">Convert</button>
         </div>
@@ -105,27 +105,35 @@
                 menu.style.left = "-250px";
             }
         }
-        
-        // Populate the "From Currency" and "To Currency" dropdowns
-        const popularCurrencies = [
-            "USD", "EUR", "JPY", "GBP", "CHF", "AUD", "CAD", "CNY", "KRW", "SGD",
-            "NZD", "INR", "BRL", "ZAR", "RUB", "MXN", "HKD", "NOK", "SEK", "DKK",
-            "MYR", "THB", "SAR", "AED", "ARS", "TRY", "EGP", "IDR", "PHP", "MAD"
-        ];
 
-        const fromCurrencyDropdown = document.getElementById("fromCurrency");
-        const toCurrencyDropdown = document.getElementById("toCurrency");
+        // Fetch currency conversion data from API
+        fetch("https://v6.exchangerate-api.com/v6/0a71530463b206e35bdbc739/latest/USD")
+            .then(response => response.json())
+            .then(data => {
+                const fromCurrencyDropdown = document.getElementById("fromCurrency");
+                const toCurrencyDropdown = document.getElementById("toCurrency");
 
-        popularCurrencies.forEach(currency => {
-            const option1 = document.createElement("option");
-            option1.value = currency;
-            option1.text = currency;
-            const option2 = document.createElement("option");
-            option2.value = currency;
-            option2.text = currency;
-            fromCurrencyDropdown.appendChild(option1);
-            toCurrencyDropdown.appendChild(option2);
-        });
+                // Add the base currency (USD) as the first option
+                const baseOption = document.createElement("option");
+                baseOption.value = "USD";
+                baseOption.text = "USD (US Dollar)";
+                fromCurrencyDropdown.appendChild(baseOption);
+                toCurrencyDropdown.appendChild(baseOption.cloneNode(true));
+
+                // Populate dropdowns with conversion rates
+                for (const currency in data.conversion_rates) {
+                    const option1 = document.createElement("option");
+                    option1.value = currency;
+                    option1.text = currency + " (" + data.conversion_rates[currency] + ")";
+                    fromCurrencyDropdown.appendChild(option1);
+
+                    const option2 = document.createElement("option");
+                    option2.value = currency;
+                    option2.text = currency + " (" + data.conversion_rates[currency] + ")";
+                    toCurrencyDropdown.appendChild(option2);
+                }
+            })
+            .catch(error => console.error("Error fetching data: ", error));
     </script>
 </body>
 </html>
