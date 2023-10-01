@@ -82,40 +82,12 @@
             <label for="fromCurrency">From Currency:</label>
             <select id="fromCurrency">
                 <!-- Populate "From Currency" dropdown with options from popularCurrencies array -->
-                <!-- You can use JavaScript to generate these options -->
-                <script>
-                    const popularCurrencies = [
-                        "USD", "EUR", "JPY", "GBP", "CHF", "AUD", "CAD", "CNY", "KRW", "SGD",
-                        "NZD", "INR", "BRL", "ZAR", "RUB", "MXN", "HKD", "NOK", "SEK", "DKK",
-                        "MYR", "THB", "SAR", "AED", "ARS", "TRY", "EGP", "IDR", "PHP", "MAD"
-                    ];
-
-                    const fromCurrencyDropdown = document.getElementById("fromCurrency");
-
-                    popularCurrencies.forEach(currency => {
-                        const option = document.createElement("option");
-                        option.value = currency;
-                        option.text = currency;
-                        fromCurrencyDropdown.appendChild(option);
-                    });
-                </script>
             </select>
             <span>to</span>
             <!-- Label for "To Currency" dropdown -->
             <label for="toCurrency">To Currency:</label>
             <select id="toCurrency">
                 <!-- Populate "To Currency" dropdown with options from popularCurrencies array -->
-                <!-- You can use JavaScript to generate these options -->
-                <script>
-                    const toCurrencyDropdown = document.getElementById("toCurrency");
-
-                    popularCurrencies.forEach(currency => {
-                        const option = document.createElement("option");
-                        option.value = currency;
-                        option.text = currency;
-                        toCurrencyDropdown.appendChild(option);
-                    });
-                </script>
             </select>
             <button id="convert">Convert</button>
         </div>
@@ -132,6 +104,27 @@
                 menu.style.left = "-250px";
             }
         }
+        
+        // Populate the "From Currency" and "To Currency" dropdowns
+        const popularCurrencies = [
+            "USD", "EUR", "JPY", "GBP", "CHF", "AUD", "CAD", "CNY", "KRW", "SGD",
+            "NZD", "INR", "BRL", "ZAR", "RUB", "MXN", "HKD", "NOK", "SEK", "DKK",
+            "MYR", "THB", "SAR", "AED", "ARS", "TRY", "EGP", "IDR", "PHP", "MAD"
+        ];
+
+        const fromCurrencyDropdown = document.getElementById("fromCurrency");
+        const toCurrencyDropdown = document.getElementById("toCurrency");
+
+        popularCurrencies.forEach(currency => {
+            const option1 = document.createElement("option");
+            option1.value = currency;
+            option1.text = currency;
+            const option2 = document.createElement("option");
+            option2.value = currency;
+            option2.text = currency;
+            fromCurrencyDropdown.appendChild(option1);
+            toCurrencyDropdown.appendChild(option2);
+        });
     </script>
 </body>
 </html>
