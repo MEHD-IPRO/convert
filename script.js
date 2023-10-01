@@ -8,17 +8,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const convertButton = document.getElementById("convert");
     const resultElement = document.getElementById("result");
 
-    // Currency conversion function using ExchangeRate-API
-    function convertCurrency(amount, fromCurrency, toCurrency) {
+    // Function to fetch exchange rates from the API
+    function fetchExchangeRates(fromCurrency) {
         const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
+        return fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`API request failed: ${response.statusText}`);
+                }
+                return response.json();
+            });
+    }
 
-        fetch(apiUrl)
-            .then(response => response.json())
+    // Function to perform currency conversion
+    function convertCurrency(amount, fromCurrency, toCurrency) {
+        fetchExchangeRates(fromCurrency)
             .then(data => {
                 if (data.result === 'success') {
                     const exchangeRate = data.conversion_rates[toCurrency];
-                    const convertedAmount = (amount * exchangeRate).toFixed(2);
-                    resultElement.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+                    if (exchangeRate) {
+                        const convertedAmount = (amount * exchangeRate).toFixed(2);
+                        resultElement.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+                    } else {
+                        resultElement.textContent = "Invalid currency selection.";
+                    }
                 } else {
                     resultElement.textContent = `API request failed: ${data['error-type']}`;
                 }
@@ -35,8 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const toCurrency = toCurrencySelect.value;
 
         // Check if amount is valid
-        if (isNaN(amount)) {
-            resultElement.textContent = "Please enter a valid amount.";
+        if (isNaN(amount) || amount <= 0) {
+            resultElement.textContent = "Please enter a valid positive amount.";
+        } else if (fromCurrency === toCurrency) {
+            resultElement.textContent = "Select different currencies for conversion.";
         } else {
             // Perform currency conversion
             convertCurrency(amount, fromCurrency, toCurrency);
