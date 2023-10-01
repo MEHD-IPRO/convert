@@ -21,11 +21,50 @@
             /* Improved for SEO: Add a meaningful button text for accessibility */
             text-transform: uppercase;
         }
+
+        /* Styles for the menu toggle button */
+        .menu-toggle {
+            background-color: transparent;
+            border: none;
+            color: #007BFF;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Styles for the mobile navigation sidebar */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Move it off-screen initially */
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: #fff;
+            transition: left 0.3s ease; /* Add a smooth transition effect */
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-nav li {
+            padding: 10px;
+        }
+
+        .mobile-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
-    <!-- Mobile navigation menu and toggle button placed at the top -->
-    <nav class="mobile-nav">
+    <!-- Menu toggle button -->
+    <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
+
+    <!-- Mobile navigation sidebar -->
+    <nav class="mobile-nav" id="menu">
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -34,7 +73,6 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-    <button class="menu-toggle">&#9776;</button>
 
     <div class="converter">
         <h1>Currency Converter</h1>
@@ -56,6 +94,16 @@
         <p id="result"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Function to toggle the menu visibility
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            if (menu.style.left === "-250px") {
+                menu.style.left = "0";
+            } else {
+                menu.style.left = "-250px";
+            }
+        }
+    </script>
 </body>
 </html>
