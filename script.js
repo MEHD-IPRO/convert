@@ -79,3 +79,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // Call the function to populate currency options
     populateCurrencyOptions();
 });
+
+// Code for converting currency
+document.getElementById("convertButton").addEventListener("click", function () {
+    // Get the input values
+    const amountInput = document.getElementById("amount");
+    const fromCurrencyDropdown = document.getElementById("fromCurrency");
+    const toCurrencyDropdown = document.getElementById("toCurrency");
+    const resultText = document.getElementById("result");
+
+    // Fetch currency conversion data from API
+    fetch("https://v6.exchangerate-api.com/v6/0a71530463b206e35bdbc739/latest/USD")
+        .then(response => response.json())
+        .then(data => {
+            // Get the selected currencies and amount
+            const fromCurrency = fromCurrencyDropdown.value;
+            const toCurrency = toCurrencyDropdown.value;
+            const amount = parseFloat(amountInput.value);
+
+            if (!isNaN(amount)) {
+                // Perform the currency conversion
+                const conversionRate = data.conversion_rates[toCurrency] / data.conversion_rates[fromCurrency];
+                const convertedAmount = (amount * conversionRate).toFixed(2);
+
+                // Update the result text
+                resultText.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+            } else {
+                resultText.textContent = "Enter a valid amount.";
+            }
+        })
+        .catch(error => console.error("Error fetching data: ", error));
+});

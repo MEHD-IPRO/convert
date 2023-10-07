@@ -74,27 +74,29 @@
             <li><a href="https://form.jotform.com/232733060638555">Contact</a></li>
         </ul>
     </nav>
+    
+    <!-- Currency Converter -->
     <div class="converter">
-    <h1>Currency Converter</h1>
-    <div class="input-container">
-        <input type="number" id="amount" placeholder="Enter amount">
-        <div class="currency-select">
+        <h1>Currency Converter</h1>
+        <div class="input-container">
+            <input type="number" id="amount" placeholder="Enter amount">
+            <!-- Label for "From Currency" dropdown -->
             <label for="fromCurrency">From Currency:</label>
             <select id="fromCurrency">
                 <!-- Populate "From Currency" dropdown with options from API -->
             </select>
+            <span class="conversion-arrow">to</span>
+            <div class="currency-select">
+                <label for="toCurrency">To Currency:</label>
+                <select id="toCurrency">
+                    <!-- Populate "To Currency" dropdown with options from API -->
+                </select>
+            </div>
         </div>
-        <span class="conversion-arrow">to</span>
-        <div class="currency-select">
-            <label for="toCurrency">To Currency:</label>
-            <select id="toCurrency">
-                <!-- Populate "To Currency" dropdown with options from API -->
-            </select>
-        </div>
+        <button id="convertButton">Convert</button>
+        <p id="result"></p>
     </div>
-    <button id="convertButton">convert</button>
-    <p id="result"></p>
-</div>
+
     <script>
         // Function to toggle the menu visibility
         function toggleMenu() {
@@ -136,9 +138,7 @@
                 }
 
                 // Add event listener to perform conversion on input or dropdown change
-                amountInput.addEventListener("input", performConversion);
-                fromCurrencyDropdown.addEventListener("change", performConversion);
-                toCurrencyDropdown.addEventListener("change", performConversion);
+                document.getElementById("convertButton").addEventListener("click", performConversion);
 
                 // Function to perform the currency conversion
                 function performConversion() {
