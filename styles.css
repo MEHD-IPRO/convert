@@ -6,25 +6,26 @@ body {
     padding: 0;
 }
 
-/* Styles for the main container */
+/* Base styles for the main container */
 .converter {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+    max-width: 90%;
+    margin: 50px auto 20px;
+    padding: 20px 10px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    font-size: 16px;
 }
 
-/* Styles for the main heading */
+/* Base styles for the main heading */
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Styles for the input container */
+/* Base styles for the input container */
 .input-container {
     display: flex;
     align-items: center;
@@ -32,8 +33,9 @@ h1 {
     gap: 10px;
 }
 
-/* Styles for numeric input */
-input[type="number"] {
+/* Base styles for numeric input and select dropdowns */
+input[type="number"],
+select {
     width: 100px;
     padding: 5px;
     font-size: 16px;
@@ -41,20 +43,12 @@ input[type="number"] {
     border-radius: 5px;
 }
 
-/* Styles for select dropdowns */
-select {
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Styles for the "to" label */
+/* Base styles for the "to" label */
 span {
     font-size: 20px;
 }
 
-/* Styles for the convert button */
+/* Base styles for the convert button */
 button {
     padding: 5px 10px;
     background-color: #007BFF;
@@ -80,7 +74,6 @@ button:hover {
     }
     
     .converter {
-        max-width: 90%;
         margin: 20px auto;
         padding: 10px;
     }
@@ -111,13 +104,30 @@ button:hover {
         font-size: 18px;
     }
     
-    /* ... other adjustments ... */
-    
     /* Additional styles for mobile devices can be added here */
 }
 
-/* Additional styles provided */
-.converter {
-    max-width: 90%; /* Relative to the parent container */
-    font-size: 16px; /* Use em or percentage for font size */
+/* Styles for mobile navigation (adjust as needed) */
+@media (max-width: 768px) {
+    .input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Styles for web navigation (adjust as needed) */
+@media (min-width: 769px) {
+    .input-container {
+        flex-direction: row;
+    }
+
+    input[type="number"] {
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
 }
