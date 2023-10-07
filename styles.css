@@ -63,7 +63,7 @@ button {
 
 /* Hover styles for the convert button */
 button:hover {
-    background-color: #0056b3;
+    background-color: #003d80; /* Darker hover background color for contrast */
 }
 
 /* Styles for screens up to 768px width (typical mobile devices) */
