@@ -43,6 +43,16 @@ select {
     border-radius: 5px;
 }
 
+/* Additional styles for select dropdowns */
+select {
+    padding: 10px; /* Increased padding for better tap target size */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Full width for mobile devices */
+    margin-bottom: 10px; /* Add some space between the dropdowns */
+}
+
 /* Base styles for the "to" label */
 span {
     font-size: 20px;
@@ -51,7 +61,7 @@ span {
 /* Base styles for the convert button */
 button {
     padding: 5px 10px;
-    background-color: #007BFF;
+    background-color: #044080;
     color: #fff;
     border: none;
     border-radius: 5px;
