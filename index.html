@@ -74,26 +74,27 @@
             <li><a href="https://form.jotform.com/232733060638555">Contact</a></li>
         </ul>
     </nav>
-
     <div class="converter">
-        <h1>Currency Converter</h1>
-        <div class="input-container">
-            <input type="number" id="amount" placeholder="Enter amount">
-            <!-- Label for "From Currency" dropdown -->
+    <h1>Currency Converter</h1>
+    <div class="input-container">
+        <input type="number" id="amount" placeholder="Enter amount">
+        <div class="currency-select">
             <label for="fromCurrency">From Currency:</label>
             <select id="fromCurrency">
                 <!-- Populate "From Currency" dropdown with options from API -->
             </select>
-            <span>to</span>
-            <!-- Label for "To Currency" dropdown -->
+        </div>
+        <span class="conversion-arrow">to</span>
+        <div class="currency-select">
             <label for="toCurrency">To Currency:</label>
             <select id="toCurrency">
                 <!-- Populate "To Currency" dropdown with options from API -->
             </select>
         </div>
-        <p id="result"></p>
     </div>
-
+    <button id="convertButton">convert</button>
+    <p id="result"></p>
+</div>
     <script>
         // Function to toggle the menu visibility
         function toggleMenu() {
