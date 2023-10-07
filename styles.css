@@ -71,9 +71,15 @@ button {
     text-transform: uppercase;
 }
 
+/* Improved contrast styles for the convert button */
+button#convertButton {
+    background-color: #044080; /* Darker background color for better contrast */
+    color: #fff; /* White text color for better visibility */
+}
+
 /* Hover styles for the convert button */
 button:hover {
-    background-color: #02264d; /* Darker hover background color for contrast */
+    background-color: #02264d; /* Darker hover background color for better contrast */
 }
 
 /* Styles for screens up to 768px width (typical mobile devices) */
