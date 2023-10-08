@@ -9,7 +9,7 @@ body {
 /* Base styles for the main container */
 .converter {
     max-width: 90%;
-    margin: 50px auto 200px;
+    margin: 0px auto 0px;
     padding: 20px 200px;
     background-color: #fff;
     border: 10px solid #ccc;
