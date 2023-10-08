@@ -94,6 +94,21 @@ button#convertButton {
         text-align: center;
         font-size: 16px;
     }
+    /* Style for the result container */
+.result-container {
+    margin: 20px;
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Style for the result paragraph */
+#result {
+    font-size: 18px;
+    color: #333;
+    margin: 0; /* Reset default margin to prevent extra spacing */
+}
     justify-content: center;
     align-items: center;
     width: 200px; /* Set a specific width for the button */
