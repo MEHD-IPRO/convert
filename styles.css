@@ -9,11 +9,11 @@ body {
 /* Base styles for the main container */
 .converter {
     max-width: 90%;
-    margin: 50px auto 20px;
-    padding: 20px 10px;
+    margin: 50px auto 200px;
+    padding: 20px 200px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 10px solid #ccc;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-size: 16px;
