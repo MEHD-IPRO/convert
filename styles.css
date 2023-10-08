@@ -36,7 +36,7 @@ h1 {
 /* Base styles for numeric input and select dropdowns */
 input[type="number"],
 select {
-    width: 100px;
+    width: 1000px;
     padding: 5px;
     font-size: 16px;
     border: 1px solid #ccc;
