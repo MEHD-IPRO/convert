@@ -83,18 +83,14 @@ button#convertButton {
     text-transform: uppercase;
     
     /* Center the button horizontally and vertically */
-    display: flex;#result {
-        max-width: 90%;
-        margin: 0px auto 0px;
-        padding: 20px 200px;
-        background-color: #fff;
-        border: 10px solid #ccc;
-        border-radius: 50px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        font-size: 16px;
-    }
-    /* Style for the result container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* Set a specific width for the button */
+    height: 40px; /* Set a specific height for the button */
+    margin: 0 auto; /* Center horizontally using margin */
+}
+/* Style for the result container */
 .result-container {
     margin: 20px;
     border: 2px solid #ccc;
@@ -109,12 +105,6 @@ button#convertButton {
     color: #333;
     margin: 0; /* Reset default margin to prevent extra spacing */
 }
-    justify-content: center;
-    align-items: center;
-    width: 200px; /* Set a specific width for the button */
-    height: 40px; /* Set a specific height for the button */
-    margin: 0 auto; /* Center horizontally using margin */
-}
 
 /* Styles for mobile navigation (adjust as needed) */
 @media (max-width: 768px) {
@@ -127,27 +117,6 @@ button#convertButton {
         width: 100%;
         margin-bottom: 10px;
     }
-}
-
-/* Additional styles for paragraph with class "ex2" */
-p.ex2 {
-  border: 1px solid red; 
-  margin: 35px;
-}
-</style>
-</head>
-<body>
-
-<h1>The padding Property</h1>
-
-<p class="ex1">This paragraph has a padding of 35 pixels on all four sides.</p>
-
-<!-- Centered "Convert" button -->
-<button id="convertButton">Convert</button>
-
-<p class="ex2">This paragraph has no specified padding, but a margin of 35 pixels on all four sides.</p>
-
-<p><strong>Note:</strong> Padding creates extra space within an element, while margin creates extra space around an element!</p>
 }
 
 /* Hover styles for the convert button */
@@ -196,19 +165,6 @@ button:hover {
     /* Additional styles for mobile devices can be added here */
 }
 
-/* Styles for mobile navigation (adjust as needed) */
-@media (max-width: 768px) {
-    .input-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    input[type="number"] {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-}
-
 /* Styles for web navigation (adjust as needed) */
 @media (min-width: 769px) {
     .input-container {
@@ -219,4 +175,10 @@ button:hover {
         margin-right: 10px;
         margin-bottom: 0;
     }
+}
+
+/* Additional styles for paragraph with class "ex2" */
+p.ex2 {
+    border: 1px solid red;
+    margin: 35px;
 }
